@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Payment Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th colspan="3"></th>
+      <th>Currency</th>
+      <th colspan="3"></th>
+      <th>Status</th>
+      <th colspan="3"></th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_requests.each do |payment_request| %>
+      <tr>
+        <td><%= payment_request.amount %></td>
+        <td colspan="3"></td>
+        <td><%= payment_request.currency %></td>
+        <td colspan="3"></td>
+        <td><%= payment_request.status %></td>
+        <td colspan="3"></td>
+        <td><%= payment_request.description %></td>
+        <td colspan="3"></td>
+        <td><%= link_to 'Show', payment_request_path(id: payment_request.id) %></td>
+        <td colspan="3"></td>
+        <td>
+          <%= button_to 'Approve', payment_request_path(id: payment_request.id, status: 'approved'), method: :patch %>
+        </td>
+        <td>
+          <%= button_to 'Reject', payment_request_path(id: payment_request.id, status: 'rejected'), method: :patch %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
