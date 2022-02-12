@@ -3,8 +3,6 @@
 class GetContractorResource
   BASE_URL = ENV['BASE_URL']
 
-  attr_reader :resource_name, :resource_id
-
   def initialize(resource_name:, resource_id: nil)
     @resource_name = resource_name
     @resource_id = resource_id
@@ -15,6 +13,8 @@ class GetContractorResource
   end
 
   private
+
+  attr_reader :resource_name, :resource_id
 
   def sanitized_response
     JSON.parse(response.body, object_class: OpenStruct)
